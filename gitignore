@@ -1,0 +1,25 @@
+# --- Archivos de Arduino / IDE ---
+build/
+bin/
+*.bak
+*.tmp
+*.elf
+*.hex
+
+# --- Sistema Operativo: Windows ---
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- Sistema Operativo: macOS ---
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.Trashes
+EOF
+
