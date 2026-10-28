@@ -1,21 +1,21 @@
 #include <WiFi.h>
 #include <WebServer.h>
 
-//ESP32 MICRO-C3
-//CODE V2.6 - Corregido error de caracteres
+// ESP32-C3 Super Mini - Control Motor L298N
+// CODE V2.9 - Estabilizado contra bloqueos y Watchdog
 
-// PWM
-#define ENA 2
-#define ENB 27
+// PWM (Salidas analógicas/PWM para velocidad)
+#define ENA 7
+#define ENB 10  
 bool turbo = false;
 const int VELOCIDAD_NORMAL = 153;
 const int VELOCIDAD_TURBO = 255;
 
-// Pines L298N
+// Pines de Dirección L298N
 #define IN1 0
-#define IN2 4
-#define IN3 32
-#define IN4 25
+#define IN2 1   
+#define IN3 3
+#define IN4 4
 
 // WIFI
 const char* ssid = "Prof. Perino";
@@ -33,13 +33,12 @@ void detener();
 void cargarPagina();
 void procesarComando(String comando);
 
-// Página HTML con estilos de "hover" y "active"
+// Página HTML optimizada para evitar ráfagas excesivas
 String pagina = R"rawliteral(
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <style>
 body{
   font-family: Arial;
@@ -50,7 +49,6 @@ body{
   -webkit-user-select: none;
   touch-action: manipulation;
 }
-
 .container{
   display: inline-block;
   background: white;
@@ -58,7 +56,6 @@ body{
   border-radius: 20px;
   box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
 }
-
 button{
   width: 140px;
   height: 70px;
@@ -71,113 +68,52 @@ button{
   color: white;
   font-weight: bold;
   transition: background-color 0.1s, transform 0.1s;
-
   user-select: none;
-  -webkit-user-select: none;
   touch-action: manipulation;
 }
-
-button:hover {
-  background-color: #2980b9;
-}
-
-button:active {
-  background-color: #1f618d;
-  transform: scale(0.95);
-}
-
+button:hover { background-color: #2980b9; }
+button:active { background-color: #1f618d; transform: scale(0.95); }
 .stop{
   width: 150px;
   height: 80px;
   font-size: 22px;
   background-color: #e74c3c;
 }
-
-.stop:hover {
-  background-color: #c0392b;
-}
-
-.stop:active {
-  background-color: #922b21;
-  transform: scale(0.95);
-}
+.stop:hover { background-color: #c0392b; }
+.stop:active { background-color: #922b21; transform: scale(0.95); }
 </style>
 </head>
-
 <body>
-
 <div class="container">
   <h1>Control Auto ESP32</h1>
-  <h1>V2.6</h1>
-
+  <h1>V2.9</h1>
   <div>
-    <button
-      onmousedown="enviar('F')"
-      onmouseup="enviar('S')"
-      ontouchstart="enviar('F')"
-      ontouchend="enviar('S')">
-      AVANZAR
-    </button>
+    <button onmousedown="enviar('F')" onmouseup="enviar('S')" ontouchstart="enviar('F')" ontouchend="enviar('S')">AVANZAR</button>
   </div>
-
   <div>
-    <button
-      onmousedown="enviar('L')"
-      onmouseup="enviar('S')"
-      ontouchstart="enviar('L')"
-      ontouchend="enviar('S')">
-      IZQUIERDA
-    </button>
-
-    <button
-      class="stop"
-      onclick="enviar('T')">
-      NITRO
-    </button>
-
-    <button
-      onmousedown="enviar('R')"
-      onmouseup="enviar('S')"
-      ontouchstart="enviar('R')"
-      ontouchend="enviar('S')">
-      DERECHA
-    </button>
+    <button onmousedown="enviar('L')" onmouseup="enviar('S')" ontouchstart="enviar('L')" ontouchend="enviar('S')">IZQUIERDA</button>
+    <button class="stop" onclick="enviar('T')">NITRO</button>
+    <button onmousedown="enviar('R')" onmouseup="enviar('S')" ontouchstart="enviar('R')" ontouchend="enviar('S')">DERECHA</button>
   </div>
-
   <div>
-    <button
-      onmousedown="enviar('B')"
-      onmouseup="enviar('S')"
-      ontouchstart="enviar('B')"
-      ontouchend="enviar('S')">
-      RETROCEDER
-    </button>
+    <button onmousedown="enviar('B')" onmouseup="enviar('S')" ontouchstart="enviar('B')" ontouchend="enviar('S')">RETROCEDER</button>
   </div>
 </div>
-
 <script>
+let ultimoEnvio = 0;
 function enviar(comando){
-    fetch('/' + comando)
-    .catch(error => console.log(error));
+    // Evita saturar el servidor enviando peticiones a más de 20 por segundo
+    let ahora = Date.now();
+    if (ahora - ultimoEnvio < 50 && comando === 'S') return; 
+    ultimoEnvio = ahora;
+
+    fetch('/' + comando).catch(error => console.log(error));
 }
-
-document.addEventListener('mouseup', function(){
-    enviar('S');
-});
-
-document.addEventListener('touchend', function(){
-    enviar('S');
-});
-
-document.addEventListener("contextmenu", function(e){
-    e.preventDefault();
-});
-
-document.addEventListener("selectstart", function(e){
-    e.preventDefault();
-});
+document.addEventListener('mouseup', () => enviar('S'));
+document.addEventListener('touchend', () => enviar('S'));
+document.addEventListener("contextmenu", e => e.preventDefault());
+document.addEventListener("selectstart", e => e.preventDefault());
 </script>
-
 </body>
 </html>
 )rawliteral";
@@ -185,7 +121,7 @@ document.addEventListener("selectstart", function(e){
 void setup(){
   Serial.begin(115200);
   delay(1000);
-  Serial.println("\nIniciando ESP32...");
+  Serial.println("\nIniciando ESP32-C3 Super Mini V2.9...");
 
   pinMode(ENA, OUTPUT);
   pinMode(ENB, OUTPUT);
@@ -200,13 +136,10 @@ void setup(){
 
   detener();
 
-  // Configurar Wi-Fi en modo Access Point (AP)
   WiFi.softAP(ssid, password);
   WiFi.setTxPower(WIFI_POWER_15dBm);
 
   Serial.println("Red Wi-Fi creada con éxito.");
-  Serial.print("Nombre de Red (SSID): ");
-  Serial.println(ssid);
   Serial.print("IP del servidor web: ");
   Serial.println(WiFi.softAPIP());
 
@@ -224,10 +157,10 @@ void setup(){
 
 void loop(){
   server.handleClient();
+  yield(); // Libera un poco de tiempo de CPU para evitar que el Watchdog reinicie el chip
 }
 
 void cargarPagina(){
-  Serial.println("[WEB] Página principal solicitada desde un cliente.");
   server.send(200, "text/html", pagina);
 }
 
@@ -243,25 +176,25 @@ void procesarComando(String comando){
 }
 
 void adelante(){
-  Serial.println("-> Comando recibido: AVANZAR (F)");
+  Serial.println("-> AVANZAR (F)");
   digitalWrite(IN1, HIGH); digitalWrite(IN2, LOW);
   digitalWrite(IN3, HIGH); digitalWrite(IN4, LOW);
 }
 
 void atras(){
-  Serial.println("-> Comando recibido: RETROCEDER (B)");
+  Serial.println("-> RETROCEDER (B)");
   digitalWrite(IN1, LOW); digitalWrite(IN2, HIGH);
   digitalWrite(IN3, LOW); digitalWrite(IN4, HIGH);
 }
 
 void izquierda(){
-  Serial.println("-> Comando recibido: IZQUIERDA (L)");
+  Serial.println("-> IZQUIERDA (L)");
   digitalWrite(IN1, LOW); digitalWrite(IN2, HIGH);
   digitalWrite(IN3, HIGH); digitalWrite(IN4, LOW);
 }
 
 void derecha(){
-  Serial.println("-> Comando recibido: DERECHA (R)");
+  Serial.println("-> DERECHA (R)");
   digitalWrite(IN1, HIGH); digitalWrite(IN2, LOW);
   digitalWrite(IN3, LOW); digitalWrite(IN4, HIGH);
 }
@@ -269,11 +202,11 @@ void derecha(){
 void cambiarTurbo(){
   turbo = !turbo;
   if(turbo){
-    Serial.println("-> Comando recibido: NITRO ACTIVADO (T)");
+    Serial.println("-> NITRO ACTIVADO");
     analogWrite(ENA, VELOCIDAD_TURBO);
     analogWrite(ENB, VELOCIDAD_TURBO);
   } else {
-    Serial.println("-> Comando recibido: NITRO DESACTIVADO (T)");
+    Serial.println("-> NITRO DESACTIVADO");
     analogWrite(ENA, VELOCIDAD_NORMAL);
     analogWrite(ENB, VELOCIDAD_NORMAL);
   }
