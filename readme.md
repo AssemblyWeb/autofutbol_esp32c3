@@ -94,6 +94,6 @@ Para poner en marcha el robot por primera vez, sigue estos pasos:
 2.  Asegúrate de que el **Jumper de 5V** del Puente H esté colocado en su posición.
 3.  Coloca el robot en el suelo y enciende el interruptor de las baterías 18650.
 4.  Busca la red de Wi-Fi "Prof. Perino" y coloca la contraseña "123Pizza" 🍕. (Podes cambiar las credenciales de acceso vos mismo en el código!!).
-5.  En algun navegador, como el de te tu telefono, escribí esta dirección IP como url: [192.168.4.1](192.168.4.1). 
+5.  En algun navegador, como el de te tu telefono, escribí esta dirección IP como url: <a href="http://192.168.4.1/" target="_blank" rel="noopener noreferrer">http://192.168.4.1</a>.
 5.  ¡La página cargará y estará lista para el juego!
 
