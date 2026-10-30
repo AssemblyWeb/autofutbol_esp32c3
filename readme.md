@@ -34,7 +34,7 @@ Para participar en los encuentros de fútbol robótico, el prototipo debe cumpli
 *   **Dimensiones de la Base:** Máximo de $20 \times 20 \text{ cm}$ (Ancho x Largo).
 *   **Peso Máximo:** Hasta $1.5 \text{ kg}$ con baterías incluidas.
 *   **Profundidad de la Pala (Mecanismo de empuje):** No debe superar los $35 \text{ mm}$.
-*   **Margen de Tolerancia:** Se permite un $\pm10\%$ de margen en las mediciones mecánicas finales durante la inspección técnica previa al partido.
+*   **Margen de Tolerancia:** Se permite un $\pm10\%$% de margen en las mediciones mecánicas finales durante la inspección técnica previa al partido.
 
 ---
 
@@ -77,5 +77,7 @@ Para poner en marcha el robot por primera vez, sigue estos pasos:
 1.  Una vez finalizada la carga con éxito, desconecta el cable USB.
 2.  Asegúrate de que el **Jumper de 5V** del Puente H esté colocado en su posición.
 3.  Coloca el robot en el suelo y enciende el interruptor de las baterías 18650.
-4.  ¡El sistema iniciará de forma autónoma listo para el juego!
+4.  Busca la red de Wi-Fi "Prof. Perino" y coloca la contraseña "123Pizza" 🍕. (Podes cambiar las credenciales de acceso vos mismo en el código!!).
+5.  En algun navegador, como el de te tu telefono, escribí esta dirección IP como url: [192.168.4.1](192.168.4.1). 
+5.  ¡La página cargará y estará lista para el juego!
 
