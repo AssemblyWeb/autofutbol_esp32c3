@@ -34,7 +34,7 @@ Para participar en los encuentros de fútbol robótico, el prototipo debe cumpli
 *   **Dimensiones de la Base:** Máximo de $20 \times 20 \text{ cm}$ (Ancho x Largo).
 *   **Peso Máximo:** Hasta $1.5 \text{ kg}$ con baterías incluidas.
 *   **Profundidad de la Pala (Mecanismo de empuje):** No debe superar los $35 \text{ mm}$.
-*   **Margen de Tolerancia:** Se permite un $\pm10\%$% de margen en las mediciones mecánicas finales durante la inspección técnica previa al partido.
+*   **Margen de Tolerancia:** Se permite un $\pm10\%$ % de margen en las mediciones mecánicas finales durante la inspección técnica previa al partido.
 
 ---
 
