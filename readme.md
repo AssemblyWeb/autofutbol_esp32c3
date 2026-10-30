@@ -42,6 +42,8 @@ Para participar en los encuentros de fútbol robótico, el prototipo debe cumpli
 
 La distribución de los pines configurada en el código y el hardware es la siguiente:
 
+![Diagrama de autorobot_esp32c3](autorobot_esp32c3.png)
+
 | ESP32 C3 Pin | Dirección | Módulo L298N | Función |
 | :--- | :---: | :--- | :--- |
 | **5V (In)** | $\leftarrow$ | **5V (Lógico)** | Alimentación lógica del microcontrolador |
@@ -68,7 +70,8 @@ Para poner en marcha el robot por primera vez, sigue estos pasos:
 1.  **Desconecta la batería 18650** del switch general del robot o **quita el Jumper de 5V** del Puente H. *(¡Paso crítico para proteger tu PC!)*.
 2.  Conecta el ESP32 C3 a la computadora mediante un cable USB de datos.
 3.  Selecciona la placa correspondiente (`ESP32C3 Dev Module`) y el puerto COM asignado.
-4.  Carga el código fuente del sketch haciendo clic en el botón **Subir** (Flecha hacia la derecha).
+4.  Copia el código fuente del archivo [autorobot_esp32c3.ino](autorobot_esp32c3.ino) en el editor
+5. Carga tu código haciendo clic en el botón **Subir** (Flecha hacia la derecha).
 
 ### 3. Puesta en Marcha en la Pista
 1.  Una vez finalizada la carga con éxito, desconecta el cable USB.
