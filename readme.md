@@ -44,6 +44,15 @@ La distribución de los pines configurada en el código y el hardware es la sigu
 
 ![Diagrama de autorobot_esp32c3](autorobot_esp32c3.png)
 
+### 1. Conexión de Alimentación (Batería al Puente H L298N)
+
+| Componente de Origen | Terminal / Pin | Componente de Destino | Terminal / Pin del L298N | Descripción / Función |
+| :--- | :--- | :--- | :--- | :--- |
+| **Baterías 18650 (Serie)** | Polo Positivo (+) | **Puente H L298N** | `Vin+` (o `12V`) | Alimentación de potencia directa para los motores |
+| **Baterías 18650 (Serie)** | Polo Negativo (-) | **Puente H L298N** | `GND` | Masa o tierra general del circuito (GND común) |
+
+### 2. Conexión del Microcontrolador (ESP32 C3 a Puente H)
+
 | ESP32 C3 Pin | Dirección | Módulo L298N | Función |
 | :--- | :---: | :--- | :--- |
 | **5V (In)** | $\leftarrow$ | **5V (Lógico)** | Alimentación lógica del microcontrolador |
@@ -54,6 +63,13 @@ La distribución de los pines configurada en el código y el hardware es la sigu
 | **Pin D1** | $\rightarrow$ | **IN2** | Dirección 2 - Motor Izquierdo |
 | **Pin D3** | $\rightarrow$ | **IN3** | Dirección 1 - Motor Derecho |
 | **Pin D4** | $\rightarrow$ | **IN4** | Dirección 2 - Motor Derecho |
+
+### 3. Conexión de Actuadores (Puente H a los Motores DC)
+
+| Módulo L298N | Terminal de Salida | Componente Destino | Terminal del Motor | Función |
+| :--- | :--- | :--- | :--- | :--- |
+| **Puente H L298N** | `OUT1` y `OUT2` | **Motor 1** (Izquierdo) | Terminales del Motor | Controla el sentido de giro y la velocidad del motor izquierdo |
+| **Puente H L298N** | `OUT3` y `OUT4` | **Motor 2** (Derecho) | Terminales del Motor | Controla el sentido de giro y la velocidad del motor derecho |
 
 ---
 
