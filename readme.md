@@ -104,7 +104,7 @@ Para poner en marcha el robot por primera vez, sigue estos pasos:
 El proyecto será evaluado de forma integral, contemplando tanto el funcionamiento final como el proceso de desarrollo y documentación:
 
 *   **1. Funcionalidad:** Que el robot responda correctamente a los comandos web (adelante, atrás, giro, turbo) de manera fluida y sin interrupciones en la pista.
-*   **2. Construcción y Montaje:** Prolijidad en el cableado eléctrico, seguridad en la sujeción de componentes (puente H, baterías, microcontrolador) y robustez del chasis físico.
+*   **2. Construcción y Montaje:** Prolijidad en el cableado eléctrico, seguridad en la sujeción de componentes (puente H, baterías, microcontrolador) y robustez del chasis físico. Asimismo, **se evaluará la naturaleza y calidad del material utilizado**, valorando positivamente el aprovechamiento de **materiales reciclados**, así como el **grado de rigidez, estabilidad y solidez estructural** de la construcción frente a los impactos del juego.
 *   **3. Creatividad e Innovación:** Originalidad en el diseño estético del vehículo, adaptaciones mecánicas ingeniosas o mejoras agregadas al sistema base.
 *   **4. Gestión del Error y Proceso Iterativo (¡Fundamental!):** Se valorará especialmente la constancia y el registro de pruebas fallidas. Consideramos que **el error es una herramienta de aprendizaje esencial**; por lo tanto, documentar qué falló y cómo se iteró para solucionarlo sumará positivamente en la calificación.
 *   **5. Material Adjunto y Documentación:** Presentación de planos, esquemas de conexión, vistas 3D, diagramas o láminas explicativas que respalden el desarrollo técnico del proyecto.
