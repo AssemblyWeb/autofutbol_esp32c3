@@ -1,6 +1,6 @@
 # Auto Robot de Fútbol - ESP32 C3 & L298N
 
-Este proyecto consiste en el diseño, conexionado y programación de un prototipo de **Auto Robot para jugar al Fútbol**, desarrollado específicamente para los alumnos de la **Escuela de Educación Secundaria Técnica N° 1 “Crucero General Belgrano”**, dentro del espacio curricular de **Sistemas Tecnológicos 3**.
+Este proyecto consiste en el diseño, cableado y programación de un prototipo de **Auto Robot para jugar al Fútbol**, desarrollado específicamente para los alumnos de la **Escuela de Educación Secundaria Técnica N° 1 “Crucero General Belgrano”**, dentro del espacio curricular de **Sistemas Tecnológicos 3**.
 
 El objetivo es aplicar conceptos de electrónica digital, control de motores por modulación de ancho de pulso (PWM) y programación de microcontroladores utilizando el chip ESP32 C3.
 
@@ -97,3 +97,14 @@ Para poner en marcha el robot por primera vez, sigue estos pasos:
 5.  En algun navegador, como el de te tu telefono, escribí esta dirección IP como url: <a href="http://192.168.4.1/" target="_blank" rel="noopener noreferrer">http://192.168.4.1</a>.
 5.  ¡La página cargará y estará lista para el juego!
 
+---
+
+### 📋 Criterios de Evaluación
+
+El proyecto será evaluado de forma integral, contemplando tanto el funcionamiento final como el proceso de desarrollo y documentación:
+
+*   **1. Funcionalidad:** Que el robot responda correctamente a los comandos web (adelante, atrás, giro, turbo) de manera fluida y sin interrupciones en la pista.
+*   **2. Construcción y Montaje:** Prolijidad en el cableado eléctrico, seguridad en la sujeción de componentes (puente H, baterías, microcontrolador) y robustez del chasis físico.
+*   **3. Creatividad e Innovación:** Originalidad en el diseño estético del vehículo, adaptaciones mecánicas ingeniosas o mejoras agregadas al sistema base.
+*   **4. Gestión del Error y Proceso Iterativo (¡Fundamental!):** Se valorará especialmente la constancia y el registro de pruebas fallidas. Consideramos que **el error es una herramienta de aprendizaje esencial**; por lo tanto, documentar qué falló y cómo se iteró para solucionarlo sumará positivamente en la calificación.
+*   **5. Material Adjunto y Documentación:** Presentación de planos, esquemas de conexión, vistas 3D, diagramas o láminas explicativas que respalden el desarrollo técnico del proyecto.
