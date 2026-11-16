@@ -108,3 +108,5 @@ El proyecto será evaluado de forma integral, contemplando tanto el funcionamien
 *   **3. Creatividad e Innovación:** Originalidad en el diseño estético del vehículo, adaptaciones mecánicas ingeniosas o mejoras agregadas al sistema base.
 *   **4. Gestión del Error y Proceso Iterativo (¡Fundamental!):** Se valorará especialmente la constancia y el registro de pruebas fallidas. Consideramos que **el error es una herramienta de aprendizaje esencial**; por lo tanto, documentar qué falló y cómo se iteró para solucionarlo sumará positivamente en la calificación.
 *   **5. Material Adjunto y Documentación:** Presentación de planos, esquemas de conexión, vistas 3D, diagramas o láminas explicativas que respalden el desarrollo técnico del proyecto.
+
+
